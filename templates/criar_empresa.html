@@ -1,0 +1,31 @@
+{% extends "index.html" %}
+
+{% block conteudo %}
+<form action="{{ url_for('criar_empresa') }}" method="post">
+    <fieldset>
+
+      <div class="form-group mb-3">
+          <label for="nome">Nome da Empresa</label>
+          <input type="text" id="nome" name="nome" class="form-control" placeholder="Ex: Petróleo Brasileiro S.A." value="{{ empresa.nome }}"required>
+      </div>
+
+      <div class="form-group mb-3">
+          <label for="sigla">Sigla</label>
+          <input type="text" id="sigla" name="sigla" class="form-control" placeholder="Ex: PETR4" value="{{ empresa.sigla }}" required>
+      </div>
+
+      <div class="form-group mb-3">
+        <label for="cnpj">CNPJ</label>
+        <input type="text" id="cnpj" name="cnpj" class="form-control" value="{{ empresa.cnpj if empresa else '' }}" required>
+      </div>
+
+      <div class="form-group mb-3">
+          <label for="descricao">Descrição</label>
+          <input type="text" id="descricao" name="descricao" class="form-control" placeholder="Descrição da atividade da empresa" value="{{ empresa.descricao }}"required>
+      </div>
+
+      <button type="submit" class="btn btn-primary btn-salvar">Salvar</button>
+
+    </fieldset>
+</form>
+{% endblock%}

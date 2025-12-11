@@ -1,0 +1,41 @@
+{% extends "index.html" %}
+
+{% block conteudo %}
+<form action="{{ url_for('atualizar_simulacao') }}" method="post">
+    <fieldset>
+        <input type="hidden" name="id" value="{{ simulacao.idSimulacao }}">
+
+      <div class="form-group mb-3">
+          <label for="data_inicial">Data Inicial</label>
+          <input type="date" id="data_inicial" name="data_inicial" class="form-control" value="{{ simulacao.data_inicial }}" required>
+      </div>
+
+      <div class="form-group mb-3">
+          <label for="data_final">Data Final</label>
+          <input type="date" id="data_final" name="data_final" class="form-control" value="{{ simulacao.data_final }}" required>
+      </div>
+
+      <div class="form-group mb-3">
+        <label for="preco_unitario">Preço Unitário</label>
+        <input type="number" step="0.01" id="preco_unitario" name="preco_unitario" class="form-control" value="{{ simulacao.preco_unitario }}" required>
+      </div>
+
+      <div class="form-group mb-3">
+          <label for="quantidade">Quantidade</label>
+          <input type="number" id="quantidade" name="quantidade" class="form-control" value="{{ simulacao.quantidade }}" required>
+      </div>
+
+      <div class="form-group mb-3">
+          <label for="preco_final">Preço Final</label>
+          <input type="number" step="0.01" id="preco_final" name="preco_final" class="form-control" value="{{ simulacao.preco_final }}" required>
+      </div>
+
+      <div class="form-group mb-3">
+          <label for="sigla_bolsa_valor">Sigla da Bolsa</label>
+          <input type="text" id="sigla_bolsa_valor" name="sigla_bolsa_valor" class="form-control" value="{{ simulacao.sigla_bolsa_valor }}" required>
+      </div>
+
+      <button type="submit" class="btn btn-primary btn-salvar">Salvar Alterações</button>
+    </fieldset>
+</form>
+{% endblock%}

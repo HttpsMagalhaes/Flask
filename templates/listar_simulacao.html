@@ -1,0 +1,33 @@
+{% extends "index.html" %}
+
+{% block conteudo %}
+<table class="table table-striped table-responsive table-bordered">
+    <thead class="thead-default">
+        <tr>
+            <th>Data Inicial</th>
+            <th>Data Final</th>
+            <th>Preço Unit.</th>
+            <th>Qtd</th>
+            <th>Preço Final</th>
+            <th>Bolsa</th>
+            <th>Ações</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for simulacao in lista %}
+        <tr>
+            <td>{{ simulacao.data_inicial.strftime('%d/%m/%Y') }}</td>
+            <td>{{ simulacao.data_final.strftime('%d/%m/%Y') }}</td>
+            <td>R$ {{ simulacao.preco_unitario }}</td>
+            <td>{{ simulacao.quantidade }}</td>
+            <td>R$ {{ simulacao.preco_final }}</td>
+            <td>{{ simulacao.sigla_bolsa_valor }}</td>
+            <td>
+                <a href="{{ url_for('editar_simulacao', id=simulacao.idSimulacao) }}" class="btn btn-warning btn-sm">Editar</a>
+                <a href="{{ url_for('deletar_simulacao', id=simulacao.idSimulacao) }}" class="btn btn-danger btn-sm">Excluir</a>
+            </td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+{% endblock%}
